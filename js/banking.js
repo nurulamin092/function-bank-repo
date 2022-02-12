@@ -34,14 +34,23 @@ document.getElementById('deposit-btn').
     addEventListener('click', function () {
         console.log("Bismillah Heer Rahmair R-him");
         const newDepositInputAmount = getInputValue('deposit-input');
-        updateTotalField('deposit-total', newDepositInputAmount);
-        updatetBalance(newDepositInputAmount, true);
-
+        if (newDepositInputAmount > 0) {
+            updateTotalField('deposit-total', newDepositInputAmount);
+            updatetBalance(newDepositInputAmount, true);
+        }
+        else {
+            alert('Please give a valid number')
+        }
     });
 document.getElementById('withdraw-btn').
     addEventListener('click', function () {
         console.log('Bilsmillah hir Rahmanir R-him');
         const newWithdrawInputAmount = getInputValue('withdraw-input')
-        updateTotalField('withdraw-total', newWithdrawInputAmount)
-        updatetBalance(newWithdrawInputAmount, false);
+        if (newWithdrawInputAmount > 0) {
+            updateTotalField('withdraw-total', newWithdrawInputAmount)
+            updatetBalance(newWithdrawInputAmount, false);
+        }
+        else {
+            alert('Please give a valid number')
+        }
     });
