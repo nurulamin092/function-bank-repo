@@ -15,40 +15,33 @@ function updateTotalField(totalInputField, amount) {
     const previousTotalAmount = parseFloat(previousTotalAmountText);
     const previousTotal = previousTotalAmount + amount;
     total.innerText = previousTotal;
-
 }
 function updatetBalance(amount, isAdd) {
     const balanceTotal = document.getElementById('balance-total');
     const balanceTotalText = balanceTotal.innerText;
     const totalaBalanceAmount = parseFloat(balanceTotalText);
-    const totalBalance = totalaBalanceAmount + amount;
-    balanceTotal.innerText = totalBalance;
+    if (isAdd == true) {
+        const totalBalance = totalaBalanceAmount + amount;
+        balanceTotal.innerText = totalBalance;
+    }
+    else {
+        const totalBalance = totalaBalanceAmount - amount;
+        balanceTotal.innerText = totalBalance;
+    }
 }
-/* if (isAdd == true) {
-    const totalBalance = totalaBalanceAmount + amount;
-    balanceTotal.innerText = totalBalance;
-}
-else {
-    const totalBalance = totalaBalanceAmount - amount;
-    balanceTotal.innerText = totalBalance;
-} */
 
 document.getElementById('deposit-btn').
     addEventListener('click', function () {
         console.log("Bismillah Heer Rahmair R-him");
         const newDepositInputAmount = getInputValue('deposit-input');
         updateTotalField('deposit-total', newDepositInputAmount);
-
-        updatetBalance(newDepositInputAmount);
+        updatetBalance(newDepositInputAmount, true);
 
     });
-
-//withdraw 
-
 document.getElementById('withdraw-btn').
     addEventListener('click', function () {
         console.log('Bilsmillah hir Rahmanir R-him');
         const newWithdrawInputAmount = getInputValue('withdraw-input')
         updateTotalField('withdraw-total', newWithdrawInputAmount)
-        //updatetBalance(newWithdrawInputAmount, false);
+        updatetBalance(newWithdrawInputAmount, false);
     });
