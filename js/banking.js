@@ -8,26 +8,27 @@ function getInputValue(inputId) {
     return newDepositInputAmount;
 
 }
+function updateTotalField(totalInputField, amount) {
+    const total = document.getElementById(totalInputField);
+    const previousTotalAmountText = total.innerText;
+    const previousTotalAmount = parseFloat(previousTotalAmountText);
+    const previousTotal = previousTotalAmount + amount;
+    total.innerText = previousTotal;
+
+}
 
 document.getElementById('deposit-btn').
     addEventListener('click', function () {
         console.log("Bismillah Heer Rahmair R-him");
 
         const newDepositInputAmount = getInputValue('deposit-input');
-        const depositTotal = document.getElementById('deposit-total');
-        const previousTotalAmountText = depositTotal.innerText;
-        const previousDepositTotalAmount = parseFloat(previousTotalAmountText);
-        const previousDepositTotal = previousDepositTotalAmount + newDepositInputAmount;
-        depositTotal.innerText = previousDepositTotal;
-
+        updateTotalField('deposit-total', newDepositInputAmount);
         //Balance total 
-
         const balanceTotal = document.getElementById('balance-total');
         const balanceTotalText = balanceTotal.innerText;
         const totalaBalanceAmount = parseFloat(balanceTotalText);
         const totalBalance = totalaBalanceAmount + newDepositInputAmount;
         balanceTotal.innerText = totalBalance;
-        // depositInputAmount.value = '';
 
         // console.log(depositTotal);
     });
@@ -37,15 +38,8 @@ document.getElementById('deposit-btn').
 document.getElementById('withdraw-btn').
     addEventListener('click', function () {
         console.log('Bilsmillah hir Rahmanir R-him');
-
         const newWithdrawInputAmount = getInputValue('withdraw-input')
-
-        const withdrawTotal = document.getElementById('withdraw-total');
-        const previousWithdrawTotalText = withdrawTotal.innerText;
-        const previousWithdrawTotal = parseFloat(previousWithdrawTotalText);
-        const previousWithdrawTotalAmount = previousWithdrawTotal + newWithdrawInputAmount;
-        withdrawTotal.innerText = previousWithdrawTotalAmount;
-
+        updateTotalField('withdraw-total', newWithdrawInputAmount)
         const balanceTotal = document.getElementById('balance-total');
         const balanceTotalText = balanceTotal.innerText;
         const totalaBalanceAmount = parseFloat(balanceTotalText)
